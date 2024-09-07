@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proxy Page</title>
+    <title>Dynamic Content Loader</title>
     <style>
         html, body {
             height: 100%;
@@ -26,19 +26,22 @@
             padding: 10px 20px;
             font-size: 16px;
         }
-        #embeddedSite {
+        #content {
             margin-top: 20px;
             width: 100%;
+            max-width: 800px;
             height: 70vh;
-            border: none;
+            overflow: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Website Proxy</h1>
+    <h1>Dynamic Content Loader</h1>
     <input type="text" id="urlInput" placeholder="Enter URL here">
     <button id="loadButton">Load Website</button>
-    <iframe id="embeddedSite"></iframe>
+    <div id="content"></div>
 
     <script>
         document.getElementById('loadButton').addEventListener('click', function() {
@@ -48,7 +51,18 @@
                 if (!url.startsWith('http://') && !url.startsWith('https://')) {
                     url = 'http://' + url;
                 }
-                document.getElementById('embeddedSite').src = url;
+                fetch('/proxy?url=' + encodeURIComponent(url))
+                    .then(response => response.text())
+                    .then(data => {
+                        // Create a new temporary page with the fetched content
+                        var newPage = window.open('', '_blank');
+                        newPage.document.open();
+                        newPage.document.write(data);
+                        newPage.document.close();
+                    })
+                    .catch(error => {
+                        document.getElementById('content').innerHTML = 'Error loading content';
+                    });
             }
         });
     </script>
