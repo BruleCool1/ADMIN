@@ -51,10 +51,10 @@
                 if (!url.startsWith('http://') && !url.startsWith('https://')) {
                     url = 'http://' + url;
                 }
-                fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(url))
-                    .then(response => response.json())
+                fetch('https://cors-anywhere.herokuapp.com/' + url)
+                    .then(response => response.text())
                     .then(data => {
-                        document.getElementById('content').innerHTML = data.contents;
+                        document.getElementById('content').innerHTML = data;
                     })
                     .catch(error => {
                         document.getElementById('content').innerHTML = 'Error loading content';
