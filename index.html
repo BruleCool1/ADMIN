@@ -23,8 +23,13 @@
             margin-top: 20px;
             width: 100%;
             max-width: 800px;
-            height: 70vh; /* Adjust based on your needs */
+            height: 30vh; /* Adjust based on your needs */
             overflow: auto;
+        }
+        #embeddedSite {
+            width: 100%;
+            height: 60vh; /* Adjust based on your needs */
+            border: none;
         }
     </style>
 </head>
@@ -37,5 +42,27 @@
     <div id="search-results">
         <!-- Google CSE will render the search results here -->
     </div>
+    <iframe id="embeddedSite"></iframe>
+
+    <script>
+        (function() {
+            var cx = 'f2afc330890dc47fe'; // Your Custom Search Engine ID
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+
+        window.onload = function() {
+            document.addEventListener('click', function(e) {
+                if (e.target && e.target.nodeName == 'A' && e.target.href) {
+                    e.preventDefault();
+                    document.getElementById('embeddedSite').src = e.target.href;
+                }
+            });
+        };
+    </script>
 </body>
 </html>
