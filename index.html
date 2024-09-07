@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Emulator</title>
+    <title>Custom Search Engine</title>
     <style>
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .gcse-search {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <iframe src="https://google.com" frameborder="0" allowfullscreen></iframe>
+    <h1>Search with Google</h1>
+    <script async src="https://cse.google.com/cse.js?cx=f2afc330890dc47fe"></script>
+    <div class="gcse-search"></div>
 </body>
 </html>
