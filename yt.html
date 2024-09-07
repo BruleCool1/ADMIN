@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Player</title>
+</head>
+<body>
+    <h1>YouTube Video Player</h1>
+    <input type="text" id="youtubeLink" placeholder="Enter YouTube link here">
+    <button onclick="playVideo()">Play Video</button>
+    <div id="videoPlayer"></div>
+
+    <script>
+        function playVideo() {
+            const link = document.getElementById('youtubeLink').value;
+            const videoId = link.split('v=')[1];
+            const embedLink = `https://www.youtube.com/embed/${videoId}`;
+            document.getElementById('videoPlayer').innerHTML = `<iframe width="560" height="315" src="${embedLink}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        }
+    </script>
+</body>
+</html>
