@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy Page</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        #urlInput {
+            margin-top: 20px;
+            width: 80%;
+            max-width: 600px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #loadButton {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #embeddedSite {
+            margin-top: 20px;
+            width: 100%;
+            height: 70vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Website Proxy</h1>
+    <input type="text" id="urlInput" placeholder="Enter URL here">
+    <button id="loadButton">Load Website</button>
+    <iframe id="embeddedSite"></iframe>
+
+    <script>
+        document.getElementById('loadButton').addEventListener('click', function() {
+            var url = document.getElementById('urlInput').value;
+            if (url) {
+                // Ensure the URL starts with http:// or https://
+                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                    url = 'http://' + url;
+                }
+                document.getElementById('embeddedSite').src = url;
+            }
+        });
+    </script>
+</body>
+</html>
