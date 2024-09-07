@@ -51,14 +51,10 @@
                 if (!url.startsWith('http://') && !url.startsWith('https://')) {
                     url = 'http://' + url;
                 }
-                fetch('/proxy?url=' + encodeURIComponent(url))
-                    .then(response => response.text())
+                fetch('https://api.allorigins.win/get?url=' + encodeURIComponent(url))
+                    .then(response => response.json())
                     .then(data => {
-                        // Create a new temporary page with the fetched content
-                        var newPage = window.open('', '_blank');
-                        newPage.document.open();
-                        newPage.document.write(data);
-                        newPage.document.close();
+                        document.getElementById('content').innerHTML = data.contents;
                     })
                     .catch(error => {
                         document.getElementById('content').innerHTML = 'Error loading content';
