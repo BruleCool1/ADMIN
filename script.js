@@ -1,6 +1,8 @@
 // Sample user data
 const users = {
+    "OWNER": "BruleCool1+Secret068",
     "ADMIN": "6612",
+    "Guest": "Im-Guest"
     };
 
 // Function to validate login
