@@ -36,6 +36,15 @@
             padding: 10px;
         }
     </style>
+    <script>
+        // Check if user is logged in
+        window.onload = function() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (!loggedInUser) {
+                window.location.href = 'index.html';
+            }
+        };
+    </script>
 </head>
 <body>
     <h1>Dynamic Content Loader</h1>
