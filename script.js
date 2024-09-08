@@ -9,11 +9,11 @@ const users = {
 // Function to validate login
 function validateLogin(username, password) {
     if (users[username] && users[username] === password) {
-        alert("Login successful!");
+        alert("FINE USE THE SITE, WHY ARE YOU BEING SO MEAN TO ME WAAAAAA AHHHHHHHHHHHHHHHHHHHHHHHHHHH?!?!?!?!?!?!?!!?!?");
         localStorage.setItem('loggedInUser', username);
         showContent();
     } else {
-        alert("Invalid username or password.");
+        alert("HAHAHAHAHAHAHA!!!!! YOU WILL NEVER FIND THE PASSWORD LOGIN INFO!!!!!!! AHAHAHAHAHAHAHAHAHAAHHAAH");
     }
 }
 
