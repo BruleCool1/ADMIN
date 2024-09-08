@@ -1,6 +1,6 @@
 // Sample user data
 const users = {
-    "ADMIN": "04628",
+    "ADMIN": "${{ secrets.ADMIN }}",
     "user2": "password2",
     "user3": "password3"
 };
