@@ -1,5 +1,5 @@
 const validUsername = "TEST";
-const validPassword = "TEST";
+const validPassword = "TEST068";
 const links = ["search.html", "yt.html", "run.html"]; // Add your extensions here
 
 function login() {
@@ -67,7 +67,8 @@ window.onload = function() {
 // Add this script to the start of your other extensions
 (function() {
     const loggedIn = localStorage.getItem("loggedIn");
-    if (!loggedIn) {
+    const currentPage = window.location.pathname.split("/").pop();
+    if (!loggedIn && currentPage !== "index.html") {
         window.location.href = "index.html"; // Redirect to the main page if not logged in
     }
 })();
