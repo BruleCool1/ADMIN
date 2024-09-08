@@ -32,6 +32,15 @@
             border: none;
         }
     </style>
+    <script>
+        // Check if user is logged in
+        window.onload = function() {
+            const loggedInUser = localStorage.getItem('loggedInUser');
+            if (!loggedInUser) {
+                window.location.href = 'index.html';
+            }
+        };
+    </script>
 </head>
 <body>
     <h1>Search with Google</h1>
@@ -55,14 +64,12 @@
             s.parentNode.insertBefore(gcse, s);
         })();
 
-        window.onload = function() {
-            document.addEventListener('click', function(e) {
-                if (e.target && e.target.nodeName == 'A' && e.target.href) {
-                    e.preventDefault();
-                    document.getElementById('embeddedSite').src = e.target.href;
-                }
-            });
-        };
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.nodeName == 'A' && e.target.href) {
+                e.preventDefault();
+                document.getElementById('embeddedSite').src = e.target.href;
+            }
+        });
     </script>
 </body>
 </html>
