@@ -1,10 +1,7 @@
 // Sample user data
 const users = {
     "ADMIN": "6612",
-    "ADMIN1": "TEST",
-    "user2": "password2",
-    "user3": "password3"
-};
+    };
 
 // Function to validate login
 function validateLogin(username, password) {
